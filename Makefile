@@ -70,7 +70,9 @@ ifeq ($(PLATFORM),MSP432)
 	CC = arm-none-eabi-gcc
 	SIZE = arm-none-eabi-size
 	CPPFLAGS = -DMSP432 $(INCLUDES)
-	LINKERFILE = ../msp432p401r.lds
+	# linkerfile modified for final assignment in same folder
+	# removed one period
+	LINKERFILE = ./msp432p401r.lds
 	LDFLAGS =  -Wl,-Map=$(TARGET).map -T $(LINKERFILE)
 	CPU = cortex-m4
 	ARCH = armv7e-m
@@ -167,8 +169,8 @@ list:
 .PHONY: clean
 clean:
 	@echo "cleaning .. "
-#	@echo $(SOURCES)  # useful tool
-#	@echo $(INCLUDES) # useful tool
+	@echo $(SOURCES)  # useful tool
+	@echo $(INCLUDES) # useful tool
 	rm -rf *.o
 	rm -rf *.d
 	rm -rf *.i

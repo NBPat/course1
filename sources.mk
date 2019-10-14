@@ -14,20 +14,22 @@
 # sourcefile for assessment C1M2 of Boulder Colorado course 
 # embedded C - student Patrick Fitzgerald
 #
+# 14 Oct 2019 - modified because now the Makefile is located in top directory
+#
 
 ifeq	($(PLATFORM),HOST)
 # SOURCES to use if compiling for Ubuntu Host
 # only the two source modules, main and memory are compiled to run
 # on the host
 #
-SOURCES =	main.c \
-		memory.c 
+SOURCES =	./src/main.c \
+		./src/memory.c 
 		
 # Header files for Ubuntu Host
 # once again, only one header directory, common is needed to generate
 # the object files used on linux host
 #
-INCLUDES =	-I../include/common
+INCLUDES =	-I./include/common
 
 # simple approach, if not host then MSP432 by default
 else
@@ -36,17 +38,17 @@ else
 # all 5 source files will be compiled to object code to run
 # on the ARM processor of the target board
 #
-SOURCES =	main.c \
-		memory.c \
-		startup_msp432p401r_gcc.c \
-		system_msp432p401r.c \
-	interrupts_msp432p401r_gcc.c
+SOURCES =	./src/main.c \
+		./src/memory.c \
+		./src/startup_msp432p401r_gcc.c \
+		./src/system_msp432p401r.c \
+	./src/interrupts_msp432p401r_gcc.c
 #
 # more source files require more header files to generate
 # the code for the ARM processor
 #
-INCLUDES =	-I../include/CMSIS \
-		-I../include/common \
-		-I../include/msp432
+INCLUDES =	-I./include/CMSIS \
+		-I./include/common \
+		-I./include/msp432
 
 endif
